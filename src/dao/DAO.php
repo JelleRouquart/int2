@@ -3,6 +3,11 @@
 class DAO {
 
   // Properties
+
+  private static $dbHost = "ID281937_20192020.db.webhosting.be";
+	private static $dbName = "ID281937_20192020";
+	private static $dbUser = "ID281937_20192020";
+  private static $dbPass = "Tigra4life";
 	private static $sharedPDO;
 	protected $pdo;
 
