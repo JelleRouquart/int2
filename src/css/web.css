@@ -33,3 +33,27 @@
     display: none;
   }
 }
+
+@media only screen and (min-width: 1200px) {
+
+  .detailproduct__revieuws--wrapper {
+    width: 120rem;
+    margin: 2rem auto;
+  }
+
+  /* .detailproduct__button--wrapper {
+    width: 120rem;
+    margin: 2rem auto;
+  } */
+
+  .goback__wrapper {
+    width: 120rem;
+    margin: 2rem auto;
+  }
+
+  .products__wrapper {
+    width: 120rem;
+    /* margin: 0 auto; */
+  }
+
+}

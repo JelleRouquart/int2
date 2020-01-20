@@ -63,6 +63,7 @@ a {
 
 .products {
   margin-top: 3rem;
+  margin-bottom: 6rem;
   padding: 0 var(--padding-around);
 }
 
@@ -104,6 +105,14 @@ a {
   padding: .5rem 1rem;
   font-family: var(--font-title);
   transition: all .3s;
+}
+
+.swipe {
+  font-size: 2rem;
+  color: var(--color-red);
+  font-family: var(--font-bold);
+  text-align: right;
+  margin: 0 var(--padding-around);
 }
 
 .product__button::after {
@@ -175,10 +184,14 @@ a {
 }
 
 .filtered {
-  display: none;
+  /* display: none; */
 }
 
 .filtered:checked + .filter {
+  height: 90vw;
+}
+
+.filtered:checked + .filter__inputs {
   height: 90vw;
 }
 
@@ -186,6 +199,16 @@ a {
   display: flex;
   height: 85vh;
 }
+
+/* .filter {
+  height: 90vw;
+}
+.filter__inputs {
+  height: 90vw;
+}
+.filter__form {
+  height: 90vw;
+} */
 
 .detailproduct {
   padding: var(--padding-around);
@@ -708,6 +731,12 @@ a {
   width: 5rem;
   height: 5rem;
   background-color: aliceblue;
+}
+
+.pic-random {
+  width: 5rem;
+  margin-top: -.8rem;
+  clip-path: polygon(0 13%, 100% 13%, 100% 87%, 0 87%);
 }
 
 .detailproduct__title--smaller {

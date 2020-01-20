@@ -12,34 +12,20 @@
 <section class="detailproduct">
   <header class="deatil__header">
     <h2 class="detailproduct__title"><?php echo $product['product'] ?></h2>
-    <!-- <div class="slide-container">
-      <span id="slider-image-one"></span>
-      <span id="slider-image-two"></span>
-      <span id="slider-image-three"></span> -->
-      <!-- <div class="image-container">
-        <img class="slider-image" width="340px" src="../assets/img/slider/one.jpg" alt="">
-        <img class="slider-image" width="340px" src="../assets/img/slider/two.jpg" alt="">
-        <img class="slider-image" width="340px" src="../assets/img/slider/three.jpg" alt="">
-      </div>
-      <div class="button-container">
-        <a href="#slider-image-one" class="slider-button">1</a>
-        <a href="#slider-image-two" class="slider-button">2</a>
-        <a href="#slider-image-three" class="slider-button">3</a>
-      </div> -->
-      <!-- <input type="radio"> -->
     </div>
   </header>
   <div class="detailproduct__img--wrapper">
     <div class="detailproduct__img">
       <?php foreach ($photos as $photo){ ?>
         <picture>
+        <source media="(min-width: 1325px)"  srcset="./assets/img/shop/<?php echo $product['id']; ?>/2/<?php echo $photo['nr']; ?>2x.jpg">
         <source media="(min-width: 0px)"  srcset="./assets/img/shop/<?php echo $product['id']; ?>/1/<?php echo $photo['nr']; ?>1x.jpg">
         <img class="pic-detail" src="./assets/img/shop/<?php echo $product['id']; ?>/1/11x.jpg" alt="dit is het artiekel: <?php echo $product['product'] ?>">
       </picture>
       <?php } ?>
       </div>
+      <div class="swipe"><p>swipe <span></span></p></div>
   </div>
-  <!-- <article class="detailproduct__specs"> -->
     <h3 class="hidden">Specs</h2>
     <form method="POST" action="index.php?page=detail&amp;id=<?php echo $product['id']; ?>" class="detailproduct__button--wrapper">
       <input  type="hidden" name="action" value="submitform">
@@ -111,7 +97,10 @@
       <?php foreach ($randoms as $random): ?>
         <li>
           <a class="random"  href="index.php?page=detail&amp;id=<?php echo $random['id']; ?>">
-            <div class="random__img"></div>
+            <div class="random__img">
+              <source media="(min-width: 0px)" srcset="./assets/img/shop/home/2/<?php echo $random['id']; ?>0.5x.jpg">
+              <img class="pic-random" src="./assets/img/shop/home/2/<?php echo $random['id']; ?>0.5x.jpg" alt="dit is het artiekel: <?php echo $random['product'] ?>">
+            </div>
             <p class="random__title"><?php echo $random['product'] ?></p>
             <p class="random__after">&#10132;</p>
           </a>

@@ -1,4 +1,4 @@
-<a class="goback" href="index.php?page=detail&amp;id=<?php echo $_GET['id']; ?>">Terug</a>
+<div class="goback__wrapper"><a class="goback" href="index.php?page=detail&amp;id=<?php echo $_GET['id']; ?>">Terug</a></div>
 <h2 class="detailproduct__title">Reviews</h2>
 <div class="detailproduct__button--wrapper revieuw__button">
   <a class="detailproduct__button" href="index.php?page=writereview&amp;id=<?php echo $_GET['id']; ?>">Schrijf zelf je review</a>
