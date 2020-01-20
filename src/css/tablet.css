@@ -1,0 +1,346 @@
+@media only screen and (min-width: 700px) {
+
+  .abonnement {
+    margin-top: -1rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+  }
+
+  .subtitle {
+    display: none;
+  }
+
+  .pic-detail {
+    width: 48vw;
+  }
+
+  .detailproduct__title {
+    width: max-content;
+  }
+
+  .filtered, .filter__label {
+    display: none;
+  }
+
+  .pic {
+    width: 31vw;
+    height: 20vw;
+  }
+
+  .filter {
+    position: unset;
+    background-color: unset;
+  }
+
+  .filter__form {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    background-color: var(--color-beige);
+    margin: 2rem 0;
+    padding: 0 var(--padding-around);
+  }
+
+  .filter__form--label {
+    border: none;
+    text-transform: unset;
+    font-size: 2rem;
+    display: block;
+    padding: 1rem 3rem;
+  }
+
+  .filter-button {
+    background-color: var(--color-red);
+    color: white;
+    border: .2rem solid var(--color-red);
+    transition: all .3s;
+  }
+
+  .filter-button:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .product__button:hover {
+    background-color: white;
+    color: var(--color-red);
+    border: .2rem solid var(--color-red);
+  }
+
+  .filter__inputs {
+    margin-bottom: 2rem;
+  }
+
+  .products {
+    margin-top: 5rem;
+  }
+
+  .product__button--wrapper {
+    margin-top: -1rem;
+  }
+
+  .product {
+    grid-template-columns: 1fr;
+    grid-template-rows: 20vw 1fr;
+    width: 1fr;
+  }
+
+  .img {
+    width: 31vw;
+    height: 20vw;
+  }
+
+  .product__text {
+    text-align: center;
+  }
+
+  .products__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2rem 1fr 2rem 1fr;
+  }
+
+  .product__background {
+    width: 2rem;
+    height: 90%;
+    background-image: url(../assets/img/dot.svg);
+    background-repeat: repeat-y;
+    background-position-x: center;
+  }
+
+  .product__background:nth-child(3n+0) {
+    display: none;
+  }
+
+  .detailproduct {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 7.5rem 1fr 22rem 10rem 54rem 70rem 70rem;
+  }
+
+  .detailproduct__img--wrapper {
+    grid-column: 1;
+    grid-row: 1;
+    width: 48vw;
+    position: fixed;
+  }
+
+  .product__price,
+  .detailproduct__button--wrapper,
+  .detailproduct__description,
+  .deatil__header,
+  .detailproduct__specs,
+  .productspecs,
+  .detailproduct__revieuws,
+  .randoms {
+    grid-column: 2;
+  }
+
+  .detailproduct__revieuws {
+    grid-row: 5;
+    padding-top: 3rem;
+    border-top: var(--border-dotted);
+  }
+
+  .detailproduct__button--wrapper {
+    width: 100%;
+    grid-row: 4;
+    padding-top: 2rem;
+    border-top: var(--border-dotted);
+  }
+
+  .product__price,
+  .productspecs {
+    grid-row: 3;
+  }
+
+  .productspecs {
+    border-right: var(--border-dotted);
+    width: 22rem;
+    border-bottom: none;
+  }
+
+  .revieuw__foto {
+    width: 20rem;
+  }
+
+  .product__price {
+    text-align: right;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 22rem;
+    width: 24rem;
+    padding-left: 2rem;
+    justify-self: flex-end;
+    border-left: var(--border-dotted);
+  }
+
+  .product__price--text {
+    font-size: 1.4rem;
+    text-transform: capitalize;
+  }
+
+  .detailproduct__price {
+    font-size: 6rem;
+  }
+
+  .detailproduct__description {
+    grid-row: 2;
+    border-top: none;
+    align-self: flex-start;
+    justify-self: flex-start;
+    margin-top: 0;
+    padding-top: 0;
+    width: 100%;
+  }
+
+  .detailproduct__img {
+    width: auto;
+
+  }
+
+  .detailproduct__specs {
+    display: flex;
+    flex-flow: column-reverse;
+  }
+
+  .randoms {
+    grid-row: 6;
+  }
+
+  .cart__item {
+    width: 60rem;
+  }
+
+  .carten {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+
+  .cart__flex--wrapper {
+    width: 60rem;
+    margin: 0 auto;
+  }
+
+  .form__persoonlijk {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 8rem;
+  }
+
+  .form__button--wrapper {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 0;
+  }
+
+  .persoonlijk__form {
+    border-bottom: none;
+  }
+
+  .keuze {
+    display: flex;
+    width: 50rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .keuze-wrapper {
+    margin-left: 2rem;
+    margin-top: -1rem;
+    text-align: left;
+  }
+
+  .thuisadres-text {
+    border-bottom: none;
+    border-right: var(--border-dotted);
+    padding-right: 2rem;
+  }
+
+  .persoonlijk__formtwo {
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    width: 30rem;
+  }
+
+  .abonnemneten__wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 97vw;
+    margin: 4rem 0;
+  }
+
+  .abonnementpage {
+    flex-flow: column;
+    width: 30vw;
+    align-items: center;
+    text-align: center;
+
+  }
+
+  .abonnement__img {
+    width: 30vw;
+    height: 20vw;
+  }
+
+  .abonnementpage__wrapper {
+    margin-top: 3rem;
+  }
+
+  .detailproduct__revieuws--wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .detailproduct__revieuws--wrapper--self {
+    grid-row: auto;
+    padding: 2rem 0;
+    grid-column: auto;
+  }
+
+  .review__background {
+    width: 1rem;
+    height: 90%;
+    background-image: url(../assets/img/dot.svg);
+    background-repeat: repeat-y;
+    background-position-x: center;
+  }
+
+  .review__background:nth-child(even){
+    display: none;
+  }
+
+  .writerev__first {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .form__review {
+    width: 80vw;
+  }
+
+  .abonnementen__uitleg {
+    width: 70rem;
+    margin: 3rem auto;
+  }
+
+  .nothing {
+    width: 70rem;
+  }
+
+  .nothing__img {
+    width: 70rem;
+  }
+
+  .revieuw__foto {
+    width: 40vw;
+  }
+
+}

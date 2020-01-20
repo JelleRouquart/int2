@@ -1,0 +1,15 @@
+:root {
+  --primary-color: black;
+  --color-red: #db3125;
+  --color-yello: #fffd55;
+  --color-beige: #f8f8f5;
+  --color-white: white;
+  --font-humo: 'News Gothic BT', helvetica, arial, sans-serif;
+  --font-title: 'Swis721 Cn BT', helvetica, arial, sans-serif;
+  --font-description: 'Georgia', 'Times New Roman', 'Times', serif;
+  --font-regular: 'NewsGothicW07-Regular', helvetica, arial, sans-serif;
+  --font-bold: 'NewsGothicW07-Bold', helvetica, arial, sans-serif;
+  --padding-around: 2rem;
+  --border-dotted: dotted black .1rem;
+  --border-double: double .4rem black;
+}
