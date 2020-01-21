@@ -30,6 +30,18 @@ class ProductDAO extends DAO {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public function  selectAllOptions($id) {
+    $sql = "SELECT `options`.`price`, `options`.`optie`, `products`.`id`  FROM `products`
+            INNER JOIN `options_link`
+            ON `products`.`id` = :id AND `options_link`.`product_id` = `products`.`id`
+            INNER JOIN `options`
+            ON `options`.`id` = `options_link`.`option_id`";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue('id', $id);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   public function  selectProduct($id) {
     $sql = "SELECT * FROM `products` WHERE `id` = :id";
     $stmt = $this->pdo->prepare($sql);

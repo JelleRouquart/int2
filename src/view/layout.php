@@ -26,6 +26,15 @@
       <?php } ?>
     </div>
     <?php echo $content;?>
+    <footer class="footer">
+      <a class="footer__abonnement" href="index.php?page=abonnement">Neem een Abonnement</a>
+      <ul class="footer__items">
+        <li class="footer__item"><a class="footer__link" href="">Home</a></li>
+        <li class="footer__item"><a class="footer__link" href="">colofon</a></li>
+        <li class="footer__item"><a class="footer__link" href="">cookies</a></li>
+        <li class="footer__item"><a class="footer__link" href="">webshop</a></li>
+      </ul>
+    </footer>
     <?php echo $js; ?>
   </body>
 </html>

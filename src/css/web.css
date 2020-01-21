@@ -1,8 +1,10 @@
 @media only screen and (min-width: 1255px) {
 
   .products__wrapper {
-    grid-template-columns: 1fr 2rem 1fr 2rem 1fr 2rem 1fr;
-    align-items: center;
+    width: 96rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2rem 1fr 2rem 1fr;
   }
 
   .pic {
@@ -10,8 +12,33 @@
     height: 13.23vw;
   }
 
+  .form__review {
+    width: 65rem;
+    margin: auto;
+  }
+
+  .footer__abonnement {
+    font-size: 2.5rem;
+    padding: .5rem 1rem;
+  }
+
+  .footer {
+    margin-bottom: 0;
+  }
+
+  .filter {
+    background-color: unset;
+  }
+
   .product {
     grid-template-rows: 15vw 1fr;
+  }
+
+  .filter__form {
+    width: 120rem;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .img {
@@ -23,14 +50,6 @@
 
   .review__background:nth-child(even){
     display: unset;
-  }
-
-  .product__background:nth-child(3n+0) {
-    display: unset;
-  }
-
-  .product__background:nth-child(4n+0) {
-    display: none;
   }
 }
 

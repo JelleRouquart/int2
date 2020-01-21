@@ -30,7 +30,40 @@ class ProductsController extends Controller {
     if(empty($products)) {
       $products = $this->productDAO->selectAllProducts();
     }
+
+    foreach ($products as $product) {
+      $options = $this->productDAO->selectAllOptions($product['id']);
+      foreach ($options as $option) {
+        if (!empty($elabas[$product['id']]) || !empty($elabas[$product['id'] . '++']) || !empty($elabas[$product['id'] . '+++']) || !empty($elabas[$product['id'] . '++'])) {
+        $elabas[$product['id'] . '++'] = array(
+          'id' => $option['id'],
+          'optie' => $option['optie'],
+          'price' => $option['price'],
+      );
+        }else if (!empty($elabas[$product['id'] . '++'])) {
+        $elabas[$product['id'] . '+++'] = array(
+          'id' => $option['id'],
+          'optie' => $option['optie'],
+          'price' => $option['price'],
+      );
+        }else if (!empty($elabas[$product['id'] . '+++'])) {
+        $elabas[$product['id'] . '++++'] = array(
+          'id' => $option['id'],
+          'optie' => $option['optie'],
+          'price' => $option['price'],
+      );
+      } else {
+      $elabas[$product['id']] = array(
+        'id' => $option['id'],
+        'optie' => $option['optie'],
+        'price' => $option['price'],
+      );
+      }
+      }
+
+    }
     $this->set('products', $products);
+    $this->set('elabas', $elabas);
     $this->set('title', 'home');
   }
 
@@ -54,6 +87,7 @@ class ProductsController extends Controller {
       $specs = $this->productDAO->showAllSpecs($_GET['id']);
       $randoms = $this->productDAO->selectFiveProducts();
       $photos = $this->productDAO->fetchPhotos($_GET['id']);
+      $options = $this->productDAO->selectAllOptions($_GET['id']);
 
       $this->set('product', $product);
       $this->set('revieuws', $revieuws);
@@ -61,6 +95,7 @@ class ProductsController extends Controller {
       $this->set('specs', $specs);
       $this->set('randoms', $randoms);
       $this->set('photos', $photos);
+      $this->set('options', $options);
     } else {
       header('Location: index.php?');
       exit();

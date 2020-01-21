@@ -83,6 +83,12 @@
       <a class="revieuw__link revieuw__second--link" href="index.php?page=reviews&amp;id=<?php echo $product['id']; ?>">schrijf je eigen revieuw >></a>
     <?php } ?>
   </article>
+  <article class="options">
+    <h2 class="hidden">Opties</h2>
+      <?php foreach($options as $option): ?>
+        <label for=""></label><?php echo $option['optie'] ?> <input type="checkbox" name="option" value="<?php echo $option['optie'] ?>"></label>
+      <?php endforeach; ?>
+  </article>
   <article class="productspecs">
     <h3 class="productspecs__title">Productspecificaties</h3>
     <ul>

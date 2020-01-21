@@ -3,7 +3,7 @@
   <a class="abonnement__button" href="index.php?page=abonnement">Meer info</a>
 </section>
 <aside class="filter">
-  <label class="filter__label" for="filter">Filters</label><input class="filtered" id="filter" type="checkbox"/>
+  <label class="filter__label" for="filter"><span class="filter__label--display">Filters</span><input class="filtered" id="filter" type="checkbox"/>
   <div class="filter__inputs">
       <form class="filter__form" action="index.php?" method="GET">
         <input class="filter__form--checkbox" id="1" type="radio" name="filter" value="alles"><label class="filter__form--label" for="1">Alles</label>
@@ -15,7 +15,8 @@
         <input type="hidden" name="action" value="filter">
         <button  class="filter__form--label filter-button">Filter</button>
       </form>
-  </div>
+</div>
+</label>
 </aside>
 <section class="products">
   <h2 class="subtitle">Products</h2>
@@ -32,6 +33,16 @@
         </div>
         <div class="product__text">
           <p class="product__title"><?php echo $product['product']; ?></p>
+          <?php foreach($elabas as $option) { ?>
+            <?php if (!empty($option)) { ?>
+              <?php if ($option['id'] == $product['id']){ ?>
+                <?php if ($option['price'] == 'unset') ?>
+                <p class="kortingscode"><?php echo $option['optie'] ?> <span>€<?php echo $option['price'] ?></span></p>
+              <?php
+              }
+             }
+           }
+           ?>
           <p class="product__price--two">€<?php echo $product['prijs']; ?></p>
           <div class="product__button--wrapper">
             <a class="product__button" href="index.php?page=detail&amp;id=<?php echo $product['id']; ?>">Meer info</a>
