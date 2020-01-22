@@ -1,17 +1,14 @@
 <a class="goback" href="index.php?page=cart">Terug</a>
-<article class="persoonlijk">
+<article class="persoonlijk persoonlijk-betaald">
     <h2 class="hidden">Persoonlijk</h2>
-  <div class="persoonlijk__steps">
-    <p class="steps__after">persoonlijk</p><span>&#10132;</span>
-    <p class="steps__after">Levering</p><span>&#10132;</span>
-    <p class="steps__after">Betaalwijze</p><span>&#10132;</span>
-    <p class="steps__after--active">Betalen</p>
-  </div>
-  <div class="persoonlijk__cart">
-    <p class="persoonlijk__cart--text">Herbekijk bestelling</p>
-  </div>
+
   <div class="bedankt__wrapper">
-    <div class="bedankt__picture"></div>
+      <picture>
+        <source media="(min-width: 1325px)"  srcset="./assets/img/shop/bedankt/bedankt23x.jpg">
+        <source media="(min-width: 700px)"  srcset="./assets/img/shop/bedankt/bedankt22x.jpg">
+        <source media="(min-width: 0px)"  srcset="./assets/img/shop/bedankt/bedankt21x.jpg">
+        <img class="pic-info pic-info--larger" src="./assets/img/shop/bedankt/bedankt1x.jpg" alt="Bedankt voor de aankoop!">
+      </picture>
     <p class="bedankt__quote">Bedankt voor jou bestelling!</p>
     <p class="bedankt__info">We zullen  er zo snel mogelijk voor zorgen dat je pakketje veilig bij je thuis komt </p>
   </div>

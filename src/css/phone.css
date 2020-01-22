@@ -28,7 +28,8 @@ a {
 .abonnement {
   margin-top: var(--padding-around);
   height: 20rem;
-  background-color: var(--color-beige);
+  background-color: var(--color-red);
+  color: white;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -43,7 +44,8 @@ a {
 }
 
 .abonnement__title--marker {
-  color: var(--color-red);
+  color: var(--color-beige);
+  font-size: 4rem;
 }
 
 .abonnement__button {
@@ -98,6 +100,10 @@ a {
 .product__price, .product__price--two {
   font-size: 2.4rem;
   font-family: var(--font-bold);
+}
+
+.product__price {
+  margin: 2rem 0;
 }
 
 .product__button {
@@ -257,14 +263,63 @@ a {
   margin: 0 auto;
 }
 
+.info__order--wrapper {
+  position: fixed;
+  top: 5rem;
+  left: 3rem;
+  justify-content: center;
+  width: 90vw;
+  display: flex;
+  height: 87vh;
+  flex-flow: column;
+  align-items: center;
+  padding: 3rem 2rem;
+  z-index: 3;
+  background-color: var(--color-red);
+}
+
+.info__order--text {
+  font-size: 10vw;
+  width: 70vw;
+  text-align: center;
+  line-height: 1em;
+  font-family: var(--font-humo);
+  margin-top: 3rem;
+  color: white;
+}
+
+.info__order--links {
+  width: 70vw;
+  margin-top: 4rem;
+  font-size: 5vw;
+  font-family: var(--font-humo);
+  display: flex;
+  justify-content: space-between;
+}
+
+.info__order--shop {
+  padding: 3vw;
+  color: white;
+  border: .2rem var(--color-yello) solid;
+}
+
+.info__order--cart {
+  padding: 3vw;
+  background-color: var(--color-yello);
+  border: .2rem var(--color-yello) solid;
+}
+
+.pic-info {
+  width: 70vw;
+}
+
 .detailproduct__img {
-  margin-top: 1rem;
-  width: 92vw;
+  width: 91vw;
   height: max-content;
   position: relative;
   overflow: auto;
   display: flex;
-
+  margin: 1rem 0 1rem 1vw;
 }
 
 .next_ {
@@ -336,8 +391,42 @@ a {
   text-align: center;
 }
 
+.products__price {
+  margin-bottom: 1rem;
+}
+
+.products__price--inner {
+  color: var(--color-red);
+}
+
+/* .products__price--wrapper {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.decide-price {
+  display: none;
+}
+
+.price__selected {
+  padding: .3rem 1rem;
+  border: white solid .2rem;
+}
+
+.price__selected--not {
+  padding: .3rem 1rem;
+  border: white solid .2rem;
+  color: var(--color-red);
+  font-size: 4rem;
+}
+
+.decide-price:checked + .price__selected {
+  border: var(--color-red) solid .2rem;
+}
+
 .detailproduct__button--wrapper {
   display: flex;
+  flex-flow: column;
   justify-content: center;
 }
 
@@ -514,6 +603,7 @@ a {
   font-size: 1.7rem;
   font-family: var(--font-bold);
   padding: var(--padding-around);
+  margin-bottom: 20rem;
 }
 
 .cart__item {
@@ -536,12 +626,15 @@ a {
   font-family: var(--font-regular);
   color: var(--color-red);
   text-decoration: underline;
+  margin-left: 1rem;
 }
 
 .cart__delete {
   font-size: 3rem;
   color: var(--color-red);
   text-decoration: none;
+  background-color: unset;
+  border: unset;
 }
 
 .cart__quantity {
@@ -571,18 +664,25 @@ a {
   display: none;
 }
 
-.cart__flex--wrapper {
-  width: 90vw;
+.cart__flex--wrap {
+  width: 100vw;
   position: fixed;
   bottom: 0;
+  margin-left: -2rem;
   background-color: white;
   border-top: var(--border-double);
   padding: 2rem var(--padding-around);
+  display: grid;
+  grid-template-columns: 1fr 29.6rem 1fr;
+}
+
+.cart__flex--wrapper {
+  width: 29.6rem;
+  grid-column: 2;
 }
 
 .order-total {
   text-align: right;
-  display: flex;
   font-size: 2rem;
 }
 
@@ -615,23 +715,46 @@ a {
 
 .persoonlijk__cart {
   width: 90vw;
-  border-bottom: double .4rem black;
+  margin-top: 2rem;
+  background-color: var(--color-beige);
 }
 
 .persoonlijk__cart--text {
-  background-color: var(--color-beige);
+  border-bottom: double .4rem black;
   font-size: 1.8rem;
   font-family: var(--font-title);
   padding: 1rem;
-  margin: 2rem 0;
+  width: 90vw;
+  display: block;
+}
+
+.text-wrapper-check {
+  width: 90vw;
+}
+
+.carten {
+  display: none;
+}
+
+.cart__input--check:checked + .persoonlijk__cart--text > .carten {
+  display: unset;
+}
+
+.cart__product--checkout {
+  text-decoration: none;
+  color: black;
+}
+
+.cart__input--check {
+  display: none;
 }
 
 .persoonlijk__input {
   width: 20rem;
 }
 
+
 .persoonlijk__form {
-  margin: 2rem 0;
   display: grid;
   grid-gap: 2rem;
   padding-bottom: 3rem;
@@ -714,9 +837,18 @@ a {
   color: var(--color-red);
 }
 
+.carten__not {
+  display: unset;
+}
+
 .bedankt__info {
   font-size: 1.8rem;
   margin-top: 1rem;
+  margin-bottom: 20rem;
+}
+
+.persoonlijk-betaald {
+  margin-top: 3rem;
 }
 
 .productspecs {
@@ -805,6 +937,11 @@ a {
   height: 11.3rem;
   background-color: aliceblue;
   margin-right: 2rem;
+}
+
+.pic-abonnement {
+  width: 11.3rem;
+  height: 11.3rem;
 }
 
 .abonnementpage__title {
@@ -913,18 +1050,52 @@ a {
   height: 2rem;
   border: solid .2rem var(--color-red);
   margin-right: 1rem;
+  transition: all .2s;
 }
 
-.thuisadres-input:checked ~ .checkmark {
+.radio__betaling--select:checked + .levering__option {
   background-color: var(--color-red);
+  color: white;
 }
 
 .thuisadres-input {
   display: none;
 }
 
+.thuisadres-input:checked + .keuze > .thuisadres-text > .checkmark {
+  background-color: var(--color-red);
+  border-radius: 50%;
+}
+
+.thuisadres-input:checked + .keuze + .persoonlijk__formtwo {
+  opacity: 0;
+}
+
 .keuze-wrapper {
   margin-top: 2rem;
+}
+
+@media only screen and (min-width: 561px) {
+
+  .pic-info {
+    width: 39.2rem;
+    /* margin-top: 4rem; */
+  }
+
+  .info__order--text {
+    font-size: 6rem;
+    width: 38rem;
+  }
+
+  .info__order--links {
+    width: 38.9rem;
+  }
+
+  .info__order--shop,
+  .info__order--cart {
+    font-size: 2.5rem;
+    padding: 2rem;
+  }
 }
 
 @media only screen and (min-width: 540px) {
@@ -945,6 +1116,10 @@ a {
   align-items: center;
   flex-flow: column;
   margin-bottom: 5rem;
+}
+
+.footer--hidden {
+  display: hidden;
 }
 
 .footer__abonnement {

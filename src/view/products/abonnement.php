@@ -8,12 +8,20 @@
     <?php foreach($abonnements as $abonnement): ?>
       <li class="abonnementpage">
         <div class="abonnement__img">
-          <img src="" alt="">
+          <picture>
+            <source media="(min-width: 1000px)"  srcset="./assets/img/shop/abonnement/big/<?php echo $abonnement['id']; ?>.jpg">
+            <source media="(min-width: 700px)"  srcset="./assets/img/shop/abonnement/medium/<?php echo $abonnement['id']; ?>.jpg">
+            <source media="(min-width: 0px)"  srcset="./assets/img/shop/abonnement/small/<?php echo $abonnement['id']; ?>.jpg">
+            <img class="pic-abonnement" src="./assets/img/shop/abonnement/medium/<?php echo $abonnement['id']; ?>.jpg" alt="dit is het artiekel: <?php echo $abonnement['product'] ?>">
+          </picture>
         </div>
        <div class="abonnementpage__wrapper">
-          <p class="abonnementpage__title"><?php echo $abonnement['maand'] ?> maand:</p>
+          <p class="abonnementpage__title"><?php echo $abonnement['name'] ?> maand:</p>
           <p class="abonnementpage__price"><?php echo $abonnement['prijs'] ?> euro/maand</p>
-          <button class="abonnementpage__button">Bestel</button>
+          <form action="index.php?page=abonnement" method="POST">
+            <input type="hidden" name="price" value="<?php echo $abonnement['id'] ?>">
+            <button type="submit" name="action" value="submitform" class="abonnementpage__button">Bestel</button>
+          </form>
        </div>
       </li>
     <?php endforeach; ?>

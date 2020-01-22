@@ -31,39 +31,7 @@ class ProductsController extends Controller {
       $products = $this->productDAO->selectAllProducts();
     }
 
-    foreach ($products as $product) {
-      $options = $this->productDAO->selectAllOptions($product['id']);
-      foreach ($options as $option) {
-        if (!empty($elabas[$product['id']]) || !empty($elabas[$product['id'] . '++']) || !empty($elabas[$product['id'] . '+++']) || !empty($elabas[$product['id'] . '++'])) {
-        $elabas[$product['id'] . '++'] = array(
-          'id' => $option['id'],
-          'optie' => $option['optie'],
-          'price' => $option['price'],
-      );
-        }else if (!empty($elabas[$product['id'] . '++'])) {
-        $elabas[$product['id'] . '+++'] = array(
-          'id' => $option['id'],
-          'optie' => $option['optie'],
-          'price' => $option['price'],
-      );
-        }else if (!empty($elabas[$product['id'] . '+++'])) {
-        $elabas[$product['id'] . '++++'] = array(
-          'id' => $option['id'],
-          'optie' => $option['optie'],
-          'price' => $option['price'],
-      );
-      } else {
-      $elabas[$product['id']] = array(
-        'id' => $option['id'],
-        'optie' => $option['optie'],
-        'price' => $option['price'],
-      );
-      }
-      }
-
-    }
     $this->set('products', $products);
-    $this->set('elabas', $elabas);
     $this->set('title', 'home');
   }
 
@@ -76,6 +44,28 @@ class ProductsController extends Controller {
     $this->set('title', 'abonnement');
     $abonnements = $this->productDAO->showAllAbonnements();
     $this->set('abonnements', $abonnements);
+
+    if (!empty($_POST['action'])){
+
+      if($_POST['action'] == 'submitform'){
+        if (empty($_SESSION['cart'][$_POST['price']])) {
+          $productVariant = $this->productDAO->selectProductVariant($_POST['price']);
+      $_SESSION['cart'][$_POST['price']] = array(
+        'product' => array(
+          'image_id' => $productVariant['0']['image_id'],
+          'id' => $productVariant['0']['id'],
+          'description' => $productVariant['0']['description'],
+          'product' => $productVariant['0']['product'],
+          'prijs' => $productVariant['0']['prijs'],
+        ),
+        'quantity' => 0
+      );
+      $product = $this->productDAO->selectProduct($_POST['price']);
+
+    }
+    $_SESSION['cart'][$_POST['price']]['quantity']++;
+      }
+    }
   }
 
   public function detail() {
@@ -87,7 +77,7 @@ class ProductsController extends Controller {
       $specs = $this->productDAO->showAllSpecs($_GET['id']);
       $randoms = $this->productDAO->selectFiveProducts();
       $photos = $this->productDAO->fetchPhotos($_GET['id']);
-      $options = $this->productDAO->selectAllOptions($_GET['id']);
+      $prices = $this->productDAO->variantPrices($_GET['id']);
 
       $this->set('product', $product);
       $this->set('revieuws', $revieuws);
@@ -95,7 +85,7 @@ class ProductsController extends Controller {
       $this->set('specs', $specs);
       $this->set('randoms', $randoms);
       $this->set('photos', $photos);
-      $this->set('options', $options);
+      $this->set('prices', $prices);
     } else {
       header('Location: index.php?');
       exit();
@@ -105,20 +95,27 @@ class ProductsController extends Controller {
     if (!empty($_POST['action'])){
 
       if($_POST['action'] == 'submitform'){
-        if (empty($_SESSION['cart'][$_POST['product_id']])) {
-          $product = $this->productDAO->selectProduct($_POST['product_id']);
+        if (empty($_SESSION['cart'][$_POST['price']])) {
+          $productVariant = $this->productDAO->selectProductVariant($_POST['price']);
         if (empty($product)) {
         return;
       }
-      $_SESSION['cart'][$_POST['product_id']] = array(
-        'product' => $product,
+      $_SESSION['cart'][$_POST['price']] = array(
+        'product' => array(
+          'image_id' => $productVariant['0']['image_id'],
+          'id' => $productVariant['0']['id'],
+          'description' => $productVariant['0']['description'],
+          'product' => $productVariant['0']['product'],
+          'prijs' => $productVariant['0']['prijs'],
+        ),
         'quantity' => 0
       );
-      $product = $this->productDAO->selectProduct($_POST['product_id']);
+      $product = $this->productDAO->selectProduct($_POST['price']);
 
     }
-    $_SESSION['cart'][$_POST['product_id']]['quantity']++;
+    $_SESSION['cart'][$_POST['price']]['quantity']++;
       }
+      $_SESSION['info'] = 'bedankt';
     }
     $this->set('title', $product['product']);
 }

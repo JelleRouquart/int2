@@ -9,7 +9,8 @@
   </div>
 </div>
 <?php } ?>
-<section class="detailproduct">
+<form method="POST" action="index.php?page=detail&amp;id=<?php echo $product['id']; ?>">
+<section class="detailproduct <?php if(!empty($revieuw)) { echo 'detailproduct--grid';} ?>">
   <header class="deatil__header">
     <h2 class="detailproduct__title"><?php echo $product['product'] ?></h2>
     </div>
@@ -27,14 +28,27 @@
       <div class="swipe"><p>swipe <span></span></p></div>
   </div>
     <h3 class="hidden">Specs</h2>
-    <form method="POST" action="index.php?page=detail&amp;id=<?php echo $product['id']; ?>" class="detailproduct__button--wrapper">
-      <input  type="hidden" name="action" value="submitform">
-      <input type="hidden" name="product_id" value="<?php echo $product['id'] ?>">
-      <button type="submit" value="submitform" class="detailproduct__button">Plaats in winkelmandje</button>
-    </form>
+
+      <div class="detailproduct__button--wrapper">
+        <input  type="hidden" name="action" value="submitform">
+        <input type="hidden" name="product_id" value="<?php echo $product['id'] ?>">
+        <button type="submit" value="submitform" class="detailproduct__button">Plaats in winkelmandje</button>
+      </div>
     <div class="product__price">
-      <p class="detailproduct__price">€<?php echo $product['prijs'] ?></p>
-      <p class="product__price--text">direct leverbaar</p>
+      <ul class="products__price--wrapper">
+        <?php foreach ($prices as $price) {?>
+          <?php if ($price['name'] != 'stand') {?>
+          <li class="products__price">
+            <input id="<?php echo $price['id'] ?>" class="decide-price" <?php if($price['is_default'] == '1') { echo 'checked';} ?> type="radio" name="price" value="<?php echo $price['id'] ?>">
+            <label for="<?php echo $price['id'] ?>" class="price__selected"><?php echo $price['name'] ?> <span class="products__price--inner">€<?php echo $price['price'] ?></span></label>
+          <?php } else {?>
+            <input id="<?php echo $price['id'] ?>" class="decide-price" <?php if($price['is_default'] == '1') { echo 'checked';} ?> type="radio" name="price" value="<?php echo $price['id'] ?>">
+            <label for="<?php echo $price['id'] ?>" class="price__selected--not">€<?php echo $price['price'] ?></label>
+          <?php } ?>
+        </li>
+        <?php } ?>
+      </ul>
+        <!-- <p class="detailproduct__price"></p> -->
     </div>
     <p class="detailproduct__description"><?php echo $product['description'] ?></p>
   <!-- </article> -->
@@ -83,12 +97,6 @@
       <a class="revieuw__link revieuw__second--link" href="index.php?page=reviews&amp;id=<?php echo $product['id']; ?>">schrijf je eigen revieuw >></a>
     <?php } ?>
   </article>
-  <article class="options">
-    <h2 class="hidden">Opties</h2>
-      <?php foreach($options as $option): ?>
-        <label for=""></label><?php echo $option['optie'] ?> <input type="checkbox" name="option" value="<?php echo $option['optie'] ?>"></label>
-      <?php endforeach; ?>
-  </article>
   <article class="productspecs">
     <h3 class="productspecs__title">Productspecificaties</h3>
     <ul>
@@ -118,4 +126,5 @@
   </aside>
 
 </section>
+</form>
 

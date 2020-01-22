@@ -33,16 +33,6 @@
         </div>
         <div class="product__text">
           <p class="product__title"><?php echo $product['product']; ?></p>
-          <?php foreach($elabas as $option) { ?>
-            <?php if (!empty($option)) { ?>
-              <?php if ($option['id'] == $product['id']){ ?>
-                <?php if ($option['price'] == 'unset') ?>
-                <p class="kortingscode"><?php echo $option['optie'] ?> <span>€<?php echo $option['price'] ?></span></p>
-              <?php
-              }
-             }
-           }
-           ?>
           <p class="product__price--two">€<?php echo $product['prijs']; ?></p>
           <div class="product__button--wrapper">
             <a class="product__button" href="index.php?page=detail&amp;id=<?php echo $product['id']; ?>">Meer info</a>

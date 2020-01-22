@@ -17,16 +17,32 @@
       <a class="link" href="index.php?page=home"><h1 class="title">Humo</h1></a>
       <a href="index.php?page=cart"><img src="../assets/img/cart.svg " alt="een foto van de cart"></a>
     </nav>
-    <div class="info__wrapper">
-      <?php if (!empty($_SESSION['info'])){?>
-      <p class="info">
-        <!-- hallo ik ben klein fuckers -->
-        <?php echo $_SESSION['info']; ?>
-      </p>
-      <?php } ?>
-    </div>
+    <?php if (!empty($_SESSION['info'])){
+        if($_GET['page'] == 'detail' || $_GET['page'] == 'abonnement'){?>
+          <div class="info__order--wrapper">
+            <picture>
+              <source media="(min-width: 1325px)"  srcset="./assets/img/shop/bedankt/bedankt3x.jpg">
+              <source media="(min-width: 700px)"  srcset="./assets/img/shop/bedankt/bedankt2x.jpg">
+              <source media="(min-width: 0px)"  srcset="./assets/img/shop/bedankt/bedankt1x.jpg">
+              <img class="pic-info" src="./assets/img/shop/bedankt/bedankt1x.jpg" alt="Bedankt voor de aankoop!">
+            </picture>
+            <p class="info__order--text">Bedankt <?php if(!empty($_product['product'])){ echo $product['product'];} else { echo 'om dit product'; } ?> te kopen</p>
+            <div class="info__order--links">
+              <a class="info__order--shop" href="index.php?">Verder shoppen</a>
+              <a class="info__order--cart" href="index.php?page=cart">Naar winkelmandje</a>
+            </div>
+          </div>
+        <?php } else { ?>
+        <div class="info__wrapper">
+          <p class="info"><?php echo $_SESSION['info']; ?></p>
+        </p>
+        <?php }
+      } ?>
     <?php echo $content;?>
-    <footer class="footer">
+    <!-- style="
+    display: none;" -->
+    <footer class="footer<?php if($_GET['page'] == 'cart') { echo '--hidden';} ?>" <?php if($_GET['page'] == 'cart') { echo 'style="
+    display: none;"';} ?>>
       <a class="footer__abonnement" href="index.php?page=abonnement">Neem een Abonnement</a>
       <ul class="footer__items">
         <li class="footer__item"><a class="footer__link" href="">Home</a></li>
