@@ -1,4 +1,4 @@
-<a class="goback" href="index.php?">Terug</a>
+<div class="goback__wrapper"><a class="goback" href="index.php?">Terug</a></div>
 <form action="index.php?page=cart" method="POST">
 <?php $total = 0; ?>
 <article class="cart">
@@ -13,9 +13,7 @@
   ?>
     <li class="cart__item cart__item--not">
       <div class="cart__image">
-        <!-- $cart['product']['id'] -->
-        <source media="(min-width: 0px)" srcset="./assets/img/shop/home/2/<?php echo $cart['product']['image_id']; ?>0.5x.jpg">
-              <img class="pic-random" src="./assets/img/shop/home/2/<?php echo $cart['product']['image_id']; ?>0.5x.jpg" alt="dit is het artiekel: <?php echo $cart['product']['description']; ?>">
+        <img class="pic-random" src="./assets/img/shop/home/2/<?php echo $cart['product']['image_id']; ?>0.5x.jpg" alt="dit is het artiekel: <?php echo $cart['product']['description']; ?>">
       </div>
       <a class="cart__product" href="index.php?page=detail&amp;id=<?php echo $cart['product']['id']; ?>"><?php echo $cart['product']['product'] ?></a>
       <input required class="cart__quantity" type="text"
@@ -28,7 +26,6 @@
     <?php } ?>
 <?php } ?>
   </ul>
-  </div>
 <div class="cart__flex--wrap">
   <div class="cart__flex--wrapper">
     <p class='order-total'><span>total:</span> <?php echo $total;?></p>
@@ -42,8 +39,8 @@
       </div>
     </div>
   </div>
+</div>
     <?php }else { ?>
-
     <div class="nothing">
       <p class="nothing__text">Er zit niks in je winkelmandje, </p>
       <img class="nothing__img" src="./assets/img/cartempty.jpg" alt="foto van Jeroom">

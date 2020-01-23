@@ -1,4 +1,4 @@
-<a class="goback" href="index.php?page=persoonlijk">Terug</a>
+<div class="goback__wrapper"><a class="goback" href="index.php?">Terug</a></div>
 <article class="persoonlijk persoonlijk-levering">
   <?php $total = 0; ?>
   <h2 class="hidden">Levering</h2>
@@ -10,7 +10,7 @@
   </div>
   <div class="persoonlijk__cart">
   <input class="cart__input--check" id="cart-checkbox" type="checkbox">
-  <label class="persoonlijk__cart--text" for="cart-checkbox"><span class="text-wrapper-check">Herbekijk bestelling</span>
+  <label class="persoonlijk__cart--text" for="cart-checkbox"><span class="text-wrapper-check">Herbekijk bestelling</span></label>
     <?php if(!empty($_SESSION['cart'])){ ?>
       <ul class="carten">
         <?php if(!empty($_SESSION['cart'])){ ?>
@@ -21,7 +21,6 @@
             ?>
             <li class="cart__item">
               <div class="cart__image">
-                <source media="(min-width: 0px)" srcset="./assets/img/shop/home/2/<?php echo $cart['product']['image_id']; ?>0.5x.jpg">
                 <img class="pic-random" src="./assets/img/shop/home/2/<?php echo $cart['product']['image_id']; ?>0.5x.jpg" alt="dit is het artiekel: <?php echo $cart['product']['description']; ?>">
               </div>
               <a class="cart__product cart__product--checkout" href="index.php?page=detail&amp;id=<?php echo $cart['product']['id']; ?>"><?php echo $cart['product']['product'] ?></a>
@@ -40,7 +39,7 @@
   <div class="levering__options">
      <label class="levering__option levering__option--selected">
       <input class="hidden" type="radio" name="group1" value="thuis">
-      Lever adres
+      Leveradres
       </label>
       <label class="levering__option levering__option--grid">
       <input class="hidden" type="radio" name="group1" value="bpost">
@@ -52,7 +51,7 @@
     <div class="keuze">
       <label for="checkbox-levering" class="thuisadres-text">
         <span class="checkmark"></span>
-        hetzelfde als thuis adres?
+        zelfde als thuisadres
       </label>
       <div class="keuze-wrapper">
         <p><?php echo $_SESSION['user']['thuisadres']['straat'] ?>, <span><?php echo $_SESSION['user']['thuisadres']['nr'] ?></span></p>
@@ -66,7 +65,7 @@
         </label>
         <div class="persoonlijk__formThree">
           <label class="form__label form__label--place">Postcode
-            <input name="postcode" class="form__input form__input--small" type="text" >
+            <input minlength="4" name="postcode" class="form__input form__input--small" type="text" >
           </label>
           <label class="form__label form__label--place">Nr
             <input name="nr" class="form__input form__input--small" type="text" >

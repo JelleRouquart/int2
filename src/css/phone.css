@@ -4,10 +4,23 @@
   width: 100%;
   margin-top: 2.5rem;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: -1rem;
   justify-content: space-between;
   padding: 1rem var(--padding-around);
+}
+
+.navigation::after {
+  content: '';
+  height: 2rem;
+  position: absolute;
+  left: 0;
+  margin-top: 3rem;
   border-bottom: double var(--primary-color) .4rem;
+  width: 100vw;
+}
+
+.form__persoonlijk--persoonlijk {
+  margin-top: 2rem;
 }
 
 .title {
@@ -138,19 +151,37 @@ a {
   background-position-y: 3rem;
 }
 
+.product__button::after:hover {
+  background-image: url(../assets/img/tocartcolor.svg);
+}
+
 .product__button--wrapper {
   margin-top: 2.9rem;
 }
 
-.filter__label {
-  position: fixed;
-  z-index: 3;
-  width: 100vw;
-  left: 0;
-  bottom: 0;
-  /* padding: 0; */
-  /* height: 90vh; */
+.input-add-review {
+  display: none;
+}
+
+.rating__input {
+  display: flex;
+}
+
+.star-add-review {
+  background-image: url(../assets/img/nostar.svg);
+  background-repeat: no-repeat;
+  width: 6rem;
   height: 5rem;
+  background-size: contain;
+  display: block;
+}
+
+.star-add-review:hover {
+  background-image: url(../assets/img/fullstar.svg);
+}
+
+.rating__input:active + .star-add-review {
+  background-image: url(../assets/img/fullstar.svg);
 }
 
 .filter {
@@ -165,14 +196,15 @@ a {
 }
 
 .filter__form {
-  display: none;
   padding: var(--padding-around);
-  /* display: flex; */
   flex-flow: column;
   background-color: white;
   width: 100vw;
-  /* height: 85vh; */
-  /* height: 0vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 5rem;
 }
 
 .filter__form--label {
@@ -182,6 +214,7 @@ a {
   padding: 1rem 0;
   border-bottom: dotted .2rem black;
   padding-left: 2rem;
+  color: white;
 }
 
 .filter__form--checkbox {
@@ -195,35 +228,45 @@ a {
   color: var(--color-red);
 }
 
+.filter___none {
+  display: none;
+}
+
 .filter__label {
   font-size: 2.5rem;
   text-transform: uppercase;
   font-family: var(--font-title);
   text-align: center;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  z-index: 3;
   width: 100vw;
+  left: 0;
+  bottom: 0;
+  padding-top: 1rem;
   height: 5rem;
+  background-color: var(--color-red);
 }
 
 .filter-button {
   background-color: var(--color-yello);
-  border-bottom: none;
+  border: unset;
   margin-top: 3rem;
+  font-size: 3rem;
+  color: black;
 }
 
 .filtered {
   display: none;
 }
 
-.filtered:checked + .filter__inputs > form {
+.filtered:checked + .filter__label + form > .filter___none {
   display: flex;
-  position: absolute;
+  flex-flow: column;
   color: white;
   height: 100vh;
-  margin-top: -100vh;
+  margin-top: -97vh;
+  top: 0;
   width: 100vw;
   left: 0;
   padding-top: 5rem;
@@ -236,16 +279,6 @@ a {
 .filter__inputs {
   color: black;
 }
-
-/* .filter {
-  height: 90vw;
-}
-.filter__inputs {
-  height: 90vw;
-}
-.filter__form {
-  height: 90vw;
-} */
 
 .detailproduct {
   padding: var(--padding-around);
@@ -562,7 +595,7 @@ a {
 
 .form__stars {
   flex-flow: column;
-  width: 16rem;
+  width: 20rem;
 }
 
 .form__button {
@@ -684,6 +717,7 @@ a {
 .order-total {
   text-align: right;
   font-size: 2rem;
+  font-family: var(--font-bold);
 }
 
 .cart__button--wrapper {
@@ -736,7 +770,7 @@ a {
   display: none;
 }
 
-.cart__input--check:checked + .persoonlijk__cart--text > .carten {
+.cart__input--check:checked ~ .persoonlijk__cart--text ~ .carten {
   display: unset;
 }
 
@@ -1004,6 +1038,10 @@ a {
   border-bottom: var(--border-double);
 }
 
+.goback__wrapper {
+  margin-top: 2rem;
+}
+
 .thanks__wrapper {
   width: 80vw;
   display: flex;
@@ -1062,6 +1100,14 @@ a {
   display: none;
 }
 
+.error {
+  color: var(--color-red);
+  font-family: var(--font-regular);
+  width: 14rem;
+  display: contents;
+  position: absolute;
+}
+
 .thuisadres-input:checked + .keuze > .thuisadres-text > .checkmark {
   background-color: var(--color-red);
   border-radius: 50%;
@@ -1071,8 +1117,61 @@ a {
   opacity: 0;
 }
 
+.persoonlijk__formtwo--margin {
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+.persoonlijk__formtwo {
+  width: 30rem;
+  margin: 0 auto;
+}
+
 .keuze-wrapper {
   margin-top: 2rem;
+}
+
+.navigation__items {
+  display: none;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.rate:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+.rate:not(:checked) > label:before {
+  content: '';
+  background-image: url(../assets/img/nostar.svg);
+  width: 4rem;
+  height: 4rem;
+}
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
 }
 
 @media only screen and (min-width: 561px) {
@@ -1123,14 +1222,14 @@ a {
 }
 
 .footer__abonnement {
-  background-color: var(--color-red);
+  border: var(--color-red) .2rem solid;
   font-size: 9vw;
   margin: 3rem auto 2rem auto;
   text-align: center;
   padding: 1vw 2vw;
   text-transform: uppercase;
   font-family: var(--font-humo);
-  color: white;
+  color: var(--color-red);
 }
 
 .footer__items {
@@ -1146,7 +1245,11 @@ a {
   margin-left: 2rem;
 }
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 340px) {
+
+  .goback__wrapper {
+    margin-top: 2rem;
+  }
 
   .footer__items {
     font-size: 1.2rem;
@@ -1154,9 +1257,31 @@ a {
 
   .product__button {
     font-size: 1.5rem;
+    width: 3rem;
+    height: 4rem;
+  }
+
+  .detailproduct__button {
+    font-size: 2rem;
+    height: 4rem;
+    margin: 1rem auto;
+    width: 82vw;
   }
 
   .product__button::after {
-    background-size: 3rem;
+    background-image: unset;
   }
 }
+
+@media only screen and (max-width: 417px) {
+
+  .abonnement__title {
+    font-size: 2rem;
+    width: 80vw;
+  }
+
+  .abonnement__title--marker {
+    font-size: 3rem;
+  }
+}
+

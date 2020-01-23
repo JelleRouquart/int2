@@ -1,4 +1,4 @@
-<a class="goback" href="index.php?">Terug</a>
+<div class="goback__wrapper"><a class="goback" href="index.php?">Terug</a></div>
 <?php if(!empty($_SESSION['info'])) { ?>
 <div class="thanks">
   <img class="thanks__img" src="./assets/img/bedankt.jpg" alt="bedankt van Jeroom">
@@ -13,7 +13,6 @@
 <section class="detailproduct <?php if(!empty($revieuw)) { echo 'detailproduct--grid';} ?>">
   <header class="deatil__header">
     <h2 class="detailproduct__title"><?php echo $product['product'] ?></h2>
-    </div>
   </header>
   <div class="detailproduct__img--wrapper">
     <div class="detailproduct__img">
@@ -27,7 +26,7 @@
       </div>
       <div class="swipe"><p>swipe <span></span></p></div>
   </div>
-    <h3 class="hidden">Specs</h2>
+    <h2 class="hidden">Specs</h2>
 
       <div class="detailproduct__button--wrapper">
         <input  type="hidden" name="action" value="submitform">
@@ -35,23 +34,21 @@
         <button type="submit" value="submitform" class="detailproduct__button">Plaats in winkelmandje</button>
       </div>
     <div class="product__price">
-      <ul class="products__price--wrapper">
+      <div class="products__price--wrapper">
         <?php foreach ($prices as $price) {?>
           <?php if ($price['name'] != 'stand') {?>
-          <li class="products__price">
-            <input id="<?php echo $price['id'] ?>" class="decide-price" <?php if($price['is_default'] == '1') { echo 'checked';} ?> type="radio" name="price" value="<?php echo $price['id'] ?>">
-            <label for="<?php echo $price['id'] ?>" class="price__selected"><?php echo $price['name'] ?> <span class="products__price--inner">€<?php echo $price['price'] ?></span></label>
-          <?php } else {?>
-            <input id="<?php echo $price['id'] ?>" class="decide-price" <?php if($price['is_default'] == '1') { echo 'checked';} ?> type="radio" name="price" value="<?php echo $price['id'] ?>">
-            <label for="<?php echo $price['id'] ?>" class="price__selected--not">€<?php echo $price['price'] ?></label>
-          <?php } ?>
-        </li>
+            <div class="products__price">
+              <input id="<?php echo $price['id'] ?>" class="decide-price" <?php if($price['is_default'] == '1') { echo 'checked';} ?> type="radio" name="price" value="<?php echo $price['id'] ?>">
+              <label for="<?php echo $price['id'] ?>" class="price__selected"><?php echo $price['name'] ?> <span class="products__price--inner">€<?php echo $price['price'] ?></span></label>
+            <?php } else {?>
+              <input id="<?php echo $price['id'] ?>" class="decide-price" <?php if($price['is_default'] == '1') { echo 'checked';} ?> type="radio" name="price" value="<?php echo $price['id'] ?>">
+              <label for="<?php echo $price['id'] ?>" class="price__selected--not">€<?php echo $price['price'] ?></label>
+            <?php } ?>
+          </div>
         <?php } ?>
-      </ul>
-        <!-- <p class="detailproduct__price"></p> -->
+      </div>
     </div>
     <p class="detailproduct__description"><?php echo $product['description'] ?></p>
-  <!-- </article> -->
   <article class="detailproduct__revieuws">
     <?php if (!empty($revieuw)) { ?>
       <h3 class="hidden">revieuws</h3>
@@ -112,7 +109,6 @@
         <li>
           <a class="random"  href="index.php?page=detail&amp;id=<?php echo $random['id']; ?>">
             <div class="random__img">
-              <source media="(min-width: 0px)" srcset="./assets/img/shop/home/2/<?php echo $random['id']; ?>0.5x.jpg">
               <img class="pic-random" src="./assets/img/shop/home/2/<?php echo $random['id']; ?>0.5x.jpg" alt="dit is het artiekel: <?php echo $random['product'] ?>">
             </div>
             <p class="random__title"><?php echo $random['product'] ?></p>

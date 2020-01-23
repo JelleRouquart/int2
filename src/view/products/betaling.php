@@ -1,4 +1,4 @@
-<a class="goback" href="index.php?page=persoonlijk">Terug</a>
+<div class="goback__wrapper"><a class="goback" href="index.php?">Terug</a></div>
 <article class="persoonlijk persoonlijk-betaling">
   <?php $total = 0; ?>
   <h2 class="hidden">Levering</h2>
@@ -10,7 +10,7 @@
   </div>
   <div class="persoonlijk__cart">
   <input class="cart__input--check" id="cart-checkbox" type="checkbox">
-  <label class="persoonlijk__cart--text" for="cart-checkbox"><span class="text-wrapper-check">Herbekijk bestelling</span>
+  <label class="persoonlijk__cart--text" for="cart-checkbox"><span class="text-wrapper-check">Herbekijk bestelling</span></label>
     <?php if(!empty($_SESSION['cart'])){ ?>
       <ul class="carten">
         <?php if(!empty($_SESSION['cart'])){ ?>
@@ -21,7 +21,6 @@
             ?>
             <li class="cart__item">
               <div class="cart__image">
-                <source media="(min-width: 0px)" srcset="./assets/img/shop/home/2/<?php echo $cart['product']['image_id']; ?>0.5x.jpg">
                 <img class="pic-random" src="./assets/img/shop/home/2/<?php echo $cart['product']['image_id']; ?>0.5x.jpg" alt="dit is het artiekel: <?php echo $cart['product']['description']; ?>">
               </div>
               <a class="cart__product cart__product--checkout" href="index.php?page=detail&amp;id=<?php echo $cart['product']['id']; ?>"><?php echo $cart['product']['product'] ?></a>
@@ -37,10 +36,9 @@
         <li class='order-total'><span>total:</span> <?php echo $total;?></li>
       </ul>
   </div>
-  </label>
   <form class="betaling__form" action="index.php?page=betaling" method="POST">
   <div class="betaling__font--wrapper">
-    <p class="betaling__font">Kies welke optie je jou bestelling wilt afronden:</p>
+    <p class="betaling__font">Kies via welke optie je jouw bestelling wil afronden:</p>
   </div>
    <div class="levering__options">
      <input checked id="radio__betaling--one" class="radio__betaling--select hidden" type="radio" name="betaling" value="Bankcontact">

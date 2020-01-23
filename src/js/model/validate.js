@@ -1,11 +1,11 @@
-require('./style.css');
 {
+
   const init = () => {
-    console.log(`form`);
+    console.log(`form`)
     const $form = document.querySelector(`form`);
     const fields = $form.querySelectorAll(`.input`);
     if ($form) {
-      $form.noValidate = true;
+      $form.noValidate = true;      
       $form.addEventListener(`submit`, handleSubmitForm);
       addValidationListeners(fields);
     }

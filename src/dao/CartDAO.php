@@ -5,6 +5,7 @@ require_once( __DIR__ . '/DAO.php');
 class CartDAO extends DAO {
 
   public function  insertUser($data) {
+    if(empty($errors)) {
     $sql = "INSERT INTO `user` (`naam`, `achternaam`, `email`, `thuis_straat`, `thuis_postcode`, `thuis_nr`, `thuis_bus`, `lever_straat`, `lever_postode`, `lever_nr`, `lever_bus`, `betaling`) VALUES (:naam, :achternaam, :email, :thuis_straat, :thuis_postcode, :thuis_nr, :thuis_bus, :lever_straat, :lever_postode, :lever_nr, :lever_bus, :betaling)";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue('naam', $data['naam']);
@@ -23,6 +24,7 @@ class CartDAO extends DAO {
       return $this->selectUserById($this->pdo->lastInsertId());
     };
   }
+}
 
 
   public function  insertOrder($data) {
@@ -52,5 +54,30 @@ class CartDAO extends DAO {
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
+  public function getValidationErrors($naam, $achternaam, $email, $data) {
+    $errors = array();
+    if(!isset($naam)) {
+      $errors['naam'] = "vul het veld in";
+    }
+    if(!isset($achternaam)) {
+      $errors['achternaam'] = "vul het veld in";
+    }
+    if(!isset($email)) {
+      $errors['email'] = "vul het veld in";
+    }
+    if(!isset($data['straat'])) {
+      $errors['straat'] = "vul het veld in";
+    }
+    if(!isset($data['postcode'])) {
+      $errors['postcode'] = "vul het veld in";
+    }
+    if(!isset($data['nr'])) {
+      $errors['nr'] = "vul het veld in";
+    }
+    if(!isset($data['bus'])) {
+      $errors['bus'] = "vul het veld in";
+    }
+    return $errors;
+  }
 
 }

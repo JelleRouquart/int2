@@ -7,6 +7,11 @@
     grid-template-columns: 1fr 2rem 1fr 2rem 1fr;
   }
 
+  .navigation {
+    width: 120rem;
+    margin: 2.5rem auto;
+  }
+
   .bedankt__info {
     width: 57rem;
     margin: 0 auto 20rem auto;
@@ -220,10 +225,32 @@
     margin: 2rem auto;
   }
 
-  /* .detailproduct__button--wrapper {
+  .detailproduct {
     width: 120rem;
     margin: 2rem auto;
-  } */
+    grid-template-columns: 59rem 57.4rem;
+  }
+
+  .goback__wrapper {
+    width: 120rem;
+    margin: 2rem auto;
+  }
+
+  .detailproduct__img {
+    width: 54rem;
+  }
+
+  .swipe {
+    width: 52rem;
+  }
+
+  .detailproduct__title {
+    width: 54rem;
+  }
+
+  .pic-detail {
+    width: 55rem;
+  }
 
   .goback__wrapper {
     width: 120rem;

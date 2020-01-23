@@ -9,7 +9,7 @@
         <source media="(min-width: 0px)"  srcset="./assets/img/shop/bedankt/bedankt21x.jpg">
         <img class="pic-info pic-info--larger" src="./assets/img/shop/bedankt/bedankt1x.jpg" alt="Bedankt voor de aankoop!">
       </picture>
-    <p class="bedankt__quote">Bedankt voor jou bestelling!</p>
-    <p class="bedankt__info">We zullen  er zo snel mogelijk voor zorgen dat je pakketje veilig bij je thuis komt </p>
+    <p class="bedankt__quote">Bedankt voor jouw bestelling!</p>
+    <p class="bedankt__info">We zullen  er zo snel mogelijk voor zorgen dat je pakketje veilig bij je thuis komt!</p>
   </div>
 </article>

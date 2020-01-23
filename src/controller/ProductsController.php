@@ -64,6 +64,7 @@ class ProductsController extends Controller {
 
     }
     $_SESSION['cart'][$_POST['price']]['quantity']++;
+    $_SESSION['info'] = 'er zit iets in';
       }
     }
   }
@@ -215,14 +216,20 @@ class ProductsController extends Controller {
           'nr' => $_POST['nr'],
           'bus' => $_POST['bus']
         );
+
+        $errors = $this->cartDAO->getValidationErrors($_POST['naam'], $_POST['achternaam'], $_POST['email'], $data);
+        $this->set('errors', $errors);
+        if(empty($errors)){
         $_SESSION['user'] = array(
         'naam' => $_POST['naam'],
         'achternaam' => $_POST['achternaam'],
         'email' => $_POST['email'],
         'thuisadres' => $data
       );
+
       header('Location: index.php?page=levering');
-      }
+    }
+        }
     }
     $this->set('title', 'persoonlijke info');
   }
@@ -274,7 +281,7 @@ class ProductsController extends Controller {
       'thuis_postcode' => $_SESSION['user']['thuisadres']['postcode'],
       'thuis_nr' => $_SESSION['user']['thuisadres']['nr'],
       'thuis_bus' => $_SESSION['user']['thuisadres']['bus'],
-      'lever_straat' => $_SESSION['user']['thuisadres']['straat'],
+      'lever_straat' => $_SESSION['user']['leveradres']['straat'],
       'lever_postode' => $_SESSION['user']['leveradres']['postcode'],
       'lever_nr' => $_SESSION['user']['leveradres']['nr'],
       'lever_bus' => $_SESSION['user']['leveradres']['bus'],
@@ -289,6 +296,7 @@ class ProductsController extends Controller {
       );
       $insertOrder = $this->cartDAO->insertOrder($orders);
     }
+    unset($_SESSION['cart']);
   }
 
 }

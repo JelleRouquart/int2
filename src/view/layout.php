@@ -13,12 +13,24 @@
   </head>
   <body>
     <nav class="navigation">
-      <img src="../assets/img/nav.svg " alt="een foto van de navigatie">
+      <a class="navigation__link--two"><img src="../assets/img/nav.svg " alt="een foto van de navigatie"></a>
+      <ul class="navigation__items">
+        <li class="navigation__item">About</li>
+        <li class="navigation__item">Humor</li>
+        <li class="navigation__item">Muziek</li>
+      </ul>
       <a class="link" href="index.php?page=home"><h1 class="title">Humo</h1></a>
-      <a href="index.php?page=cart"><img src="../assets/img/cart.svg " alt="een foto van de cart"></a>
+      <ul class="navigation__items">
+        <li class="navigation__item">Boeken</li>
+        <li class="navigation__item">TV/film</li>
+        <li class="navigation__item">Home</li>
+      </ul>
+      <a class="navigation__link" href="index.php?page=cart"><img src="../assets/img/cart.svg " alt="een foto van de cart"></a>
     </nav>
+    <div class="navigation__wrapper">
+    </div>
     <?php if (!empty($_SESSION['info'])){
-        if($_GET['page'] == 'detail' || $_GET['page'] == 'abonnement'){?>
+        if($_GET['page'] == 'detail' || $_GET['page'] == 'abonnement') {?>
           <div class="info__order--wrapper">
             <picture>
               <source media="(min-width: 1325px)"  srcset="./assets/img/shop/bedankt/bedankt3x.jpg">
@@ -51,6 +63,6 @@
         <li class="footer__item"><a class="footer__link" href="">webshop</a></li>
       </ul>
     </footer>
-    <?php echo $js; ?>
+      <?php echo $js; ?>
   </body>
 </html>

@@ -4,13 +4,16 @@
     width: 30rem;
     margin: 0 auto;
   }
-}
 
+  .form__persoonlijk--persoonlijk {
+    margin-top: 2rem;
+  }
+
+}
 
 @media only screen and (min-width: 700px) {
 
   .abonnement {
-    margin-top: -1rem;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -25,7 +28,18 @@
   }
 
   .detailproduct__title {
-    width: max-content;
+    width: 40vw;
+  }
+
+  .filter___none {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100vw;
+  }
+
+  .filter__form--label {
+    color: black;
   }
 
   .filtered, .filter__label--display {
@@ -34,6 +48,7 @@
 
   .filter__label {
     position: unset;
+    display: none;
   }
 
   .pic {
@@ -162,11 +177,11 @@
     display: grid;
     grid-gap: 3rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 7.5rem 1fr 22rem 10rem 54rem;
+    grid-template-rows: auto 1fr 22rem 10rem 54rem;
   }
 
   .detailproduct--grid {
-    grid-template-rows: 7.5rem 1fr 22rem 10rem 20rem;
+    grid-template-rows: auto 1fr 22rem 10rem 20rem;
   }
 
   .detailproduct__img--wrapper {
@@ -442,6 +457,11 @@
     display: hidden;
   }
 
+  .navigation__wrapper {
+    display: none;
+    border: unset;
+  }
+
 }
 
 @media only screen and (min-width: 990px) {
@@ -449,6 +469,10 @@
   .filter__form--label {
     font-size: 2rem;
     padding: 1rem 2rem;
+  }
+
+  .navigation__link--two {
+    display: none;
   }
 
   .abonnement {
@@ -486,6 +510,27 @@
     display: inline;
     position: absolute;
     right: 10vw;
+  }
+
+  .navigation__items {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+    width: 40vw;
+    background-color: var(--color-beige);
+  }
+
+  .navigation__item {
+    font-family: var(--font-title);
+    font-size: 2rem;
+  }
+
+  .navigation__link {
+    margin-left: 2rem;
+  }
+
+  .navigation__link--two {
+    margin-right: 2rem;
   }
 }
 
@@ -536,5 +581,12 @@
 
   .abonnement__title::after {
     right: 20vw;
+  }
+}
+
+@media only screen and (max-width: 417px) {
+
+  .abonnement {
+    font-size: 1rem;
   }
 }
